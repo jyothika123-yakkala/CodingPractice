@@ -1,0 +1,121 @@
+#Bruteforce solution for rotating the array of elements k positions towards left.
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+class Solution{
+    
+    public:
+    void rotate(vector<int> &nums,int k)
+    {
+        int n = nums.size();
+        
+        k = k%n;
+        for(int i=0;i<k;i++)
+        {
+            int temp = nums[n-1];
+            for(int j=4;j>=0;j--)
+            {
+                nums[j]=nums[j-1];
+            }
+            nums[0]=temp;
+        }
+    }
+    
+};
+int main()
+{
+    Solution solution;
+    
+    vector<int>nums;
+    cout<<"enter the size of the vector:"<<endl;
+    int n;
+    cin>>n;
+    cout<<"enter the elements to the vector:"<<endl;
+    for(int i=0;i<n;i++)
+    {
+        int num;
+        cin>>num;
+        nums.push_back(num);
+    }
+    cout<<"enter the k value"<<endl;
+    int k;
+    cin>>k;
+    solution.rotate(nums,k);
+    for(int i=0;i<n;i++)
+    {
+        cout<<nums[i];
+    }
+}
+#Approach2:
+class Solution{
+    
+    public:
+    void rotate(vector<int> &nums,int k)
+    {
+        k=k%nums.size();
+       reverse(nums.begin(),nums.end());
+       reverse(nums.begin(),nums.begin()+k);
+       reverse(nums.begin()+k,nums.end());
+    }
+    
+};
+#Since these operations are sequential, the overall time complexity is O(n + k + (n - k))
+#Approch 3:
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+class Solution {
+public:
+    void reverseArray(vector<int>& nums, int start, int end) {
+        while (start < end) {
+            // Swap elements at start and end indices
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+
+            // Move indices towards the center
+            start++;
+            end--;
+        }
+    }
+
+    void rotate(vector<int>& nums, int k) {
+        k = k % nums.size();
+        
+        // Reverse the entire array
+        reverseArray(nums, 0, nums.size() - 1);
+
+        // Reverse the first k elements
+        reverseArray(nums, 0, k - 1);
+
+        // Reverse the remaining elements
+        reverseArray(nums, k, nums.size() - 1);
+    }
+};
+
+int main() {
+    Solution solution;
+
+    // Example usage
+    vector<int> nums = {1, 2, 3, 4, 5, 6, 7};
+    int k = 3;
+
+    cout << "Original array: ";
+    for (int num : nums) {
+        cout << num << " ";
+    }
+    cout << endl;
+
+    solution.rotate(nums, k);
+
+    cout << "Rotated array by " << k << " places: ";
+    for (int num : nums) {
+        cout << num << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+
