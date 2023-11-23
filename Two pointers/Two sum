@@ -1,0 +1,138 @@
+Naive Approach: The basic approach to solve this problem is by nested traversal.
+Traverse the array using a loop
+For each element:
+Check if there exists another in the array with sum as x
+Return true if yes, else continue
+If no such pair is found, return false.
+----------------Solution------------------------------------------------------
+#include <iostream>
+#include<bits/stdc++.h>
+
+using namespace std;
+vector<int> twoSum(vector<int>&c,int n,int target)
+{
+    vector<int>v;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            if(i!=j)
+            {
+                if(c[i]+c[j]==target)
+                {
+                    v.push_back(c[i]);
+                    v.push_back(c[j]);
+                    return v;
+                    
+                }
+                else{
+                    continue;
+                }
+            }
+        }
+    }
+    return v;
+}
+int main()
+{
+    vector<int>result;
+    cout<<"enter the size of the array:"<<endl;
+    int n;
+    cin>>n;
+    vector <int>c;
+    cout<<"enter the elements of an array"<<endl;
+    for(int i=0;i<n;i++)
+    {
+        int num;
+        cin>>num;
+        c.push_back(num);
+    }
+    cout<<"enter the target"<<endl;
+    int target;
+    cin>>target;
+    result = twoSum(c,n,target);
+    for(int i=0;i<exist.size();i++)
+    {
+        cout<<result[i]<<" ";
+    }   
+    
+}
+#Time complexity of this approach is O(n^2);
+--------------------------solution using map-----------------------------------
+#include <iostream>
+#include<bits/stdc++.h>
+
+using namespace std;
+int main()
+{
+    cout<<"enter the size:";
+    int n;
+    cin>>n;
+    cout<<"enter the elements to the vector:"<<endl;
+    vector<int>v;
+    for(int i=0;i<n;i++)
+    {
+        int num;
+        cin>>num;
+        v.push_back(num);
+    }
+    cout<<"enter the target:";
+    int target;
+    cin>>target;
+    map<int,int>m;
+    for(auto i:v)
+    {
+        int more = target-i;
+        if(m.find(more)==m.end())
+        {
+            m[i]++;
+        }
+        else{
+           cout<<i<<" "<<m[more];
+           return 0;
+        }
+        
+    }
+    return 0;
+    
+}
+#time complexity is O(n)
+-------------------------------------------solution using two pointers------------------------------
+#include <iostream>
+#include<bits/stdc++.h>
+
+using namespace std;
+int main()
+{
+    cout<<"enter the size:";
+    int n;
+    cin>>n;
+    cout<<"enter the elements to the vector:"<<endl;
+    vector<int>v;
+    for(int i=0;i<n;i++)
+    {
+        int num;
+        cin>>num;
+        v.push_back(num);
+    }
+    cout<<"enter the target:";
+    int target;
+    cin>>target;
+    map<int,int>m;
+    for(auto i:v)
+    {
+        int more = target-i;
+        if(m.find(more)==m.end())
+        {
+            m[i]++;
+        }
+        else{
+           cout<<i<<" "<<m[more];
+           return 0;
+        }
+        
+    }
+    return 0;
+    
+}
+#time complexity:O(n)
