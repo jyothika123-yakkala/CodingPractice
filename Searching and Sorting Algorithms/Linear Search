@@ -1,0 +1,89 @@
+Searching-
+--------------
+Searching is a process of finding a particular element among several given elements.
+The search is successful if the required element is found.
+Otherwise, the search is unsuccessful.
+Searching Algorithms-
+1.Linear Search
+2.Binary Search
+Linear Search-
+----------------
+Linear Search is the simplest searching algorithm.
+It traverses the array sequentially to locate the required element.
+It searches for an element by comparing it with each element of the array one by one.
+So, it is also called as Sequential Search.
+----------------------------code--------------------------------------------
+#include<iostream>
+using namespace std;
+int linearSearch(int arr[],int n,int key)
+{
+    int loc=-1;
+    for(int i=0;i<n;i++)
+    {
+        if(arr[i]==key)
+        {
+            loc = i;
+            return loc;
+        }
+    }
+    return loc;
+}
+int main(){
+    cout<<"Enter the key:"<<endl;
+    int key;
+    cin>>key;
+    cout<<"Enter the size of the array:"<<endl;
+    int n;
+    cin>>n;
+    int arr[n];
+    cout<<"Enter the elements of an array:"<<endl;
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    cout<<"the element is at:"<<linearSearch(arr,n,key);
+}
+-----------------------Time Complexity---------------------
+Linear Search time complexity analysis is done below-
+
+ 
+
+Best case-
+-----------
+ 
+
+In the best possible case,
+
+The element being searched may be found at the first position.
+In this case, the search terminates in success with just one comparison.
+Thus in best case, linear search algorithm takes O(1) operations.
+ 
+
+Worst Case-
+--------------
+ 
+
+In the worst possible case,
+
+The element being searched may be present at the last position or not present in the array at all.
+In the former case, the search terminates in success with n comparisons.
+In the later case, the search terminates in failure with n comparisons.
+Thus in worst case, linear search algorithm takes O(n) operations.
+ 
+
+Thus, we have-
+
+ 
+
+Time Complexity of Linear Search Algorithm is O(n).
+Here, n is the number of elements in the linear array.
+
+ 
+
+Linear Search Efficiency-
+------------------------------
+ 
+
+Linear Search is less efficient when compared with other algorithms like Binary Search & Hash tables.
+The other algorithms allow significantly faster searching.
+ 
