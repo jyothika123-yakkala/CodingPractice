@@ -1,0 +1,71 @@
+Selection Sort-
+--------------------------------
+ Selection sort is one of the easiest approaches to sorting.
+It is inspired from the way in which we sort things out in day to day life.
+It is an in-place sorting algorithm because it uses no auxiliary data structures while sorting.
+How Selection Sort Works?
+----------------------------------
+Consider the following elements are to be sorted in ascending order using selection sort-
+
+6, 2, 11, 7, 5
+Selection sort works as-
+---------------------------------
+
+It finds the first smallest element (2).
+It swaps it with the first element of the unordered list.
+It finds the second smallest element (5).
+It swaps it with the second element of the unordered list.
+Similarly, it continues to sort the given elements.
+
+As a result, sorted elements in ascending order are-
+
+2, 5, 6, 7, 11
+Selection Sort Algorithm-
+------------------------------
+for (i = 0 ; i < n-1 ; i++)
+
+{
+
+   index = i;
+
+   for(j = i+1 ; j < n ; j++)
+
+   {
+
+      if(A[j] < A[index])
+
+      index = j;
+
+   }
+
+   temp = A[i];
+
+   A[i] = A[index];
+
+   A[index] = temp;
+
+}
+Here,
+
+i = variable to traverse the array A
+index = variable to store the index of minimum element
+j = variable to traverse the unsorted sub-array
+temp = temporary variable used for swapping
+--------------------------------------------Time Complexity---------------------------------
+Selection sort algorithm consists of two nested loops.
+Owing to the two nested loops, it has O(n2) time complexity.
+ 
+
+Time Complexity
+---------------
+Best Case ->	n2
+Average Case ->	n2
+Worst Case-> n2
+ 
+
+Space Complexity Analysis-
+----------------------------
+Selection sort is an in-place algorithm.
+It performs all computation in the original array and no other array is used.
+Hence, the space complexity works out to be O(1).
+ 
