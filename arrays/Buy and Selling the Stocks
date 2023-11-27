@@ -1,3 +1,31 @@
+-----------------------------------Brute Force------------------------------------------------------
+#include <iostream>
+#include<bits/stdc++.h>
+
+using namespace std;
+int maxProfitObtained(vector<int>& Arr)
+{
+    int N= Arr.size();
+    
+    int maxi = INT_MIN;
+    for(int i=1;i<N;i++)
+    {
+        
+        for(int j=0;j<i;j++)
+        {
+            int profit = Arr[i]-Arr[j];
+            maxi = max(maxi,profit);
+        }
+    }
+    return maxi;
+}
+#Time Complexity:O(n^2)
+----------------------------------------------Using DP------------------------------------------------------------------
+int main()
+{
+    vector<int> Arr  ={7,1,5,3,6,4};
+    cout<<"max_profit_Obtained:"<<" "<<maxProfitObtained(Arr);
+}
 #include <bits/stdc++.h>
 
 using namespace std;
