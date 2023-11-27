@@ -1,0 +1,87 @@
+#Brute Force:It involves generating all subArrays and finding the maximum sum continuous subarray.
+#include <iostream>
+#include<bits/stdc++.h>
+
+using namespace std;
+int LongestSum(int arr[],int n)
+{
+    int max_Value = INT_MIN;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            int sum =0;
+            for(int k=i;k<j;k++)
+            {
+            
+                sum=sum+arr[k];
+                max_Value = max(max_Value,sum);
+            }
+        }
+    }
+    return max_Value;
+}
+
+int main()
+{
+  int arr[] = { -2, -3, 4, -1, -2, 1, 5, -3 };
+  int n = sizeof(arr) / sizeof(arr[0]);
+  int maxvalue=LongestSum(arr,n);
+  cout<<maxvalue;
+}
+Time complexity of the above approach = O(n^3)
+Better Approach:
+#include <iostream>
+#include<bits/stdc++.h>
+
+using namespace std;
+int LongestSum(int arr[],int n)
+{
+    int max_Value = INT_MIN;
+    for(int i=0;i<n;i++)
+    { 
+        int sum =0;
+        for(int j=i;j<n;j++)
+        {
+            sum=sum+arr[j];
+            max_Value = max(max_Value,sum);
+        }
+    }
+    return max_Value;
+}
+
+int main()
+{
+  int arr[] = { -2, -3, 4, -1, -2, 1, 5, -3 };
+  int n = sizeof(arr) / sizeof(arr[0]);
+  int maxvalue=LongestSum(arr,n);
+  cout<<maxvalue;
+}
+#Time Complexity:O(n^2)
+Optimal Approch using Kadane's Algorithm.
+
+#include <iostream>
+#include<bits/stdc++.h>
+
+using namespace std;
+int LongestSum(int arr[],int n)
+{
+    int max_value=INT_MIN;
+    int current_Sum=0;
+    for(int i=0;i<n;i++)
+    {
+        current_Sum = current_Sum+arr[i];
+        max_value=max(max_value,current_Sum);
+        current_Sum = max(current_Sum,0);
+    }
+    return max_value;
+}
+
+int main()
+{
+  int arr[] = { -2, -3, 4, -1, -2, 1, 5, -3 };
+  int n = sizeof(arr) / sizeof(arr[0]);
+  int maxvalue=LongestSum(arr,n);
+  cout<<maxvalue;
+}
+TimeComplexity=O(n).
